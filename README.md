@@ -12,4 +12,5 @@ Each turret is capable of:
   5. Storing the total damage points dealt by each team
   
 To be used in tandem with the TechnoBlaster.
+
 Able to cater to up to 300 participants.
