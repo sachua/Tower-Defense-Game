@@ -1,5 +1,6 @@
 # Tower-Defense-Game
-A Tower Defense game played as a finale game during Enitio 2018, a Transition and Orientation Camp in Nanyang Technological University, School of Electrical and Electronic Engineering. 
+A Tower Defense game played as a finale game during Enitio 2018.
+Enitio 2018 was a Transition and Orientation Camp held in Nanyang Technological University, School of Electrical and Electronic Engineering. 
 
 The game has a total of 4 turrets. Each turret has an Arduino Uno.
 Each turret is capable of:
