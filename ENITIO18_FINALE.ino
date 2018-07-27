@@ -415,10 +415,10 @@ void loop()
     {
       Health_Pixels.setPixelColor(i, red);
     }
-    else if (i<avgG){
+    else if (i < avgG){
       Health_Pixels.setPixelColor(i, green);
     }
-    else if(i<avgB){
+    else if(i < avgB){
       Health_Pixels.setPixelColor(i, blue);
     }
     else{
