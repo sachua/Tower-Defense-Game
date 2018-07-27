@@ -5,6 +5,7 @@ Enitio 2018 was a Transition and Orientation Camp held in Nanyang Technological 
 The game has a total of 4 turrets. Each turret has an Arduino Uno.
 
 Each turret is capable of:
+
   1. Firing damage codes at its attackers (Damage-per-second & Instant-death) 
   2. Determining if a laser is shooting its LDR sensor at the base of the turret
   3. Activating its IR receiver when it confirms that a laser is shooting its LDR sensor
