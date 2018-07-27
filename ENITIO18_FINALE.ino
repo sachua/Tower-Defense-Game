@@ -22,19 +22,19 @@
 #define ATTACKED_R1 2601  //Weakest attack
 #define ATTACKED_R2 2602  //Weak attack
 #define ATTACKED_R3 2603  //Strong attack
-#define ATTACKED_R4 2801  //Strongest attack 2604
-#define ATTACKED_G1 2604
-#define ATTACKED_G2 2704
-#define ATTACKED_G3 2904
+#define ATTACKED_R4 2604  //Strongest attack 2604
+#define ATTACKED_G1 2801
+#define ATTACKED_G2 2802
+#define ATTACKED_G3 2803
 #define ATTACKED_G4 2804
 #define ATTACKED_B1 2901
 #define ATTACKED_B2 2902
 #define ATTACKED_B3 2903
-#define ATTACKED_B4 2802 //2904
+#define ATTACKED_B4 2904
 #define ATTACKED_Y1 2701
 #define ATTACKED_Y2 2702
 #define ATTACKED_Y3 2703
-#define ATTACKED_Y4 2803 //2704
+#define ATTACKED_Y4 2704
 #define dmg1 1            //Weakest attack damage
 #define dmg2 2            //weak attack damage
 #define dmg3 5            //Strong attack damage
