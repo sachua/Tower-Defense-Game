@@ -17,8 +17,8 @@
 #define BRIGHTNESS 50
 #define LIFE 50           //no. of pixels showing damage ratio
 #define ACTIVATED 50      //no. of pixels showing tower is activated
-#define DPS 2901          //Damage per second code
-#define DEATHPULSE 2900   //Instant-death code
+#define DPS 3000          //Damage per second code
+#define DEATHPULSE 3001   //Instant-death code
 #define ATTACKED_R1 2601  //Weakest attack
 #define ATTACKED_R2 2602  //Weak attack
 #define ATTACKED_R3 2603  //Strong attack
