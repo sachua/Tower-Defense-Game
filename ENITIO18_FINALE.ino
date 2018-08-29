@@ -13,17 +13,12 @@
 #define BUZZER_PIN 8
 #define ACTIVATED_PIN 4
 #define IR_PIN 11
+#define RESET_PIN 13
 #define BRIGHTNESS 50
 #define LIFE 50           //no. of pixels showing damage ratio
 #define ACTIVATED 50      //no. of pixels showing tower is activated
-#define DPS_R 3001          //Damage per second code
-#define DPS_G 3002
-#define DPS_B 3003
-#define DPS_Y 3004
-#define DEATHPULSE_R 3101   //Instant-death code
-#define DEATHPULSE_G 3102
-#define DEATHPULSE_B 3103
-#define DEATHPULSE_Y 3104
+#define DPS 3000          //Damage per second code
+#define DEATHPULSE 3001   //Instant-death code
 #define ATTACKED_R1 2601  //Weakest attack
 #define ATTACKED_R2 2602  //Weak attack
 #define ATTACKED_R3 2603  //Strong attack
@@ -40,7 +35,6 @@
 #define ATTACKED_Y2 2702
 #define ATTACKED_Y3 2703
 #define ATTACKED_Y4 2704
-#define RESET 2500        //Reset tower code
 #define dmg1 1            //Weakest attack damage
 #define dmg2 2            //weak attack damage
 #define dmg3 5            //Strong attack damage
@@ -57,26 +51,6 @@ int addr = 0, threshold, avgR = 0, avgG = 0, avgB = 0, avgY = 0;
 float R = 0, G = 0, B = 0, Y = 0;
 unsigned long previousMillis1 = 0, previousMillis2 = 0, previousMillis3 = 0;
 unsigned long red = Health_Pixels.Color(150, 0, 0), green = Health_Pixels.Color(0, 150, 0), blue = Health_Pixels.Color(0, 0, 150), yellow = Health_Pixels.Color(150, 150, 0);
-
-#if RED
-  DPS = DPS_R;
-  DEATHPULSE = DEATHPULSE_R;
-#endif
-
-#if GREEN
-  DPS = DPS_G;
-  DEATHPULSE = DEATHPULSE_G;
-#endif
-
-#if BLUE
-  DPS = DPS_B;
-  DEATHPULSE = DEATHPULSE_B;
-#endif
-
-#if YELLOW
-  DPS = DPS_Y;
-  DEATHPULSE = DEATHPULSE_Y;
-#endif
 
 //Get threshold before game starts
 int getThreshold(int pin, int samples, float multiplier)
@@ -186,38 +160,6 @@ void updateScores(int A, int B, int C, int D)
   addr = 0;
 }
 
-//Reset tower score
-void reset()
-{
-  #if DEBUG
-    Serial.println("RESET");
-  #endif
-  #ifdef RED
-    R = 1000;
-    G = 0;
-    B = 0;
-    Y = 0;
-  #endif
-  #ifdef GREEN
-    R = 0;
-    G = 1000;
-    B = 0;
-    Y = 0;
-  #endif
-  #ifdef BLUE
-    R = 0;
-    G = 0;
-    B = 1000;
-    Y = 0;
-  #endif
-  #ifdef YELLOW
-    R = 0;
-    G = 0;
-    B = 0;
-    Y = 1000;
-  #endif
-}
-
 void setup()
 {
   pinMode(LDR_PIN, INPUT);
@@ -289,6 +231,37 @@ void loop()
   unsigned long currentMillis1 = millis(), currentMillis2 = millis(), currentMillis3 = millis();
   const unsigned resultLength = results.bits;
 	const unsigned resultsValue = results.value;
+
+  if (!digitalRead(RESET_PIN))
+  {
+    #if DEBUG
+      Serial.println("RESET");
+    #endif
+    #ifdef RED
+      R = 1000;
+      G = 0;
+      B = 0;
+      Y = 0;
+    #endif
+    #ifdef GREEN
+      R = 0;
+      G = 1000;
+      B = 0;
+      Y = 0;
+    #endif
+    #ifdef BLUE
+      R = 0;
+      G = 0;
+      B = 1000;
+      Y = 0;
+    #endif
+    #ifdef YELLOW
+      R = 0;
+      G = 0;
+      B = 0;
+      Y = 1000;
+    #endif
+  }
 
   //When no laser hitting LDR
   if (value == 0)
@@ -364,9 +337,6 @@ void loop()
             break;
           case ATTACKED_Y4:
             Y += dmg4;
-            break;
-          case RESET;
-            reset();
             break;
           default:
             delay(50);
